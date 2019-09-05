@@ -27,6 +27,9 @@ namespace sLOGGER
 			this.numericUpDown2.Value = m_ss.GRP_COL_CNT;
 			//---
 			DDX(true);
+#if true//2019.09.06(近接時間測定)
+			checkBox1_CheckedChanged(null, null);
+#endif
 		}
 
 		private void Form21_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,6 +67,10 @@ namespace sLOGGER
 				DDV.DDX(bUpdate, this.textBox3 , ref m_ss.THD_OVR_STR);
 				DDV.DDX(bUpdate, this.numericUpDown3, ref m_ss.THD_FNT_SIZ);
 #endif
+#if true//2019.09.06(近接時間測定)
+				DDV.DDX(bUpdate, this.checkBox1, ref m_ss.THD_MES_TIM);
+#endif
+
                 rc = true;
             }
             catch (Exception e) {
@@ -72,5 +79,18 @@ namespace sLOGGER
             }
             return (rc);
 		}
+#if true//2019.09.06(近接時間測定)
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+			if (this.checkBox1.Checked) {
+				this.textBox2.Enabled = false;
+				this.textBox3.Enabled = false;
+			}
+			else {
+				this.textBox2.Enabled = true;
+				this.textBox3.Enabled = true;
+			}
+		}
+#endif
 	}
 }

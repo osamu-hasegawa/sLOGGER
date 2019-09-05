@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form02));
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -522,6 +523,7 @@
 			this.ClientSize = new System.Drawing.Size(1366, 716);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.panel33);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form02";
 			this.Text = "sLOGGER:GRAPH(近接専用)";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form02_FormClosing);

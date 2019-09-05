@@ -95,7 +95,7 @@ namespace sLOGGER
 				//for device scan
 			}
 			if (adr == 0x44) {
-				int val = (int)(3000 * Math.Abs(Math.Sin(m_idx/100.0)));
+				int val = (int)(3000 * Math.Abs(Math.Sin(m_idx/300.0)));
 				d38_reg[0x44] = (byte)B1(val);
 				d38_reg[0x45] = (byte)B2(val);
 			}

@@ -59,6 +59,7 @@
 			this.comboBox13 = new System.Windows.Forms.ComboBox();
 			this.label33 = new System.Windows.Forms.Label();
 			this.label34 = new System.Windows.Forms.Label();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -169,6 +170,7 @@
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.checkBox1);
 			this.groupBox2.Controls.Add(this.label75);
 			this.groupBox2.Controls.Add(this.label74);
 			this.groupBox2.Controls.Add(this.numericUpDown3);
@@ -184,7 +186,7 @@
 			this.groupBox2.Controls.Add(this.textBox37);
 			this.groupBox2.Location = new System.Drawing.Point(178, 15);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(381, 82);
+			this.groupBox2.Size = new System.Drawing.Size(381, 92);
 			this.groupBox2.TabIndex = 61;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "スケール";
@@ -449,7 +451,18 @@
 			this.label34.TabIndex = 1;
 			this.label34.Text = "IR";
 			// 
-			// Form21
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(175, 70);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(154, 16);
+			this.checkBox1.TabIndex = 38;
+			this.checkBox1.Text = "閾値以上区間の時間測定";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// Form20
 			// 
 			this.AcceptButton = this.button1;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -465,7 +478,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Form21";
+			this.Name = "Form20";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "設定";
@@ -518,6 +531,7 @@
 		private System.Windows.Forms.ComboBox comboBox13;
 		private System.Windows.Forms.Label label33;
 		private System.Windows.Forms.Label label34;
+		private System.Windows.Forms.CheckBox checkBox1;
 
 	}
 }

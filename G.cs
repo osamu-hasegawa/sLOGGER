@@ -97,6 +97,9 @@ namespace sLOGGER
 			public string THD_LES_STR = "NG";
 			public int THD_FNT_SIZ = 36;
 #endif
+#if true//2019.09.06(近接時間測定)
+			public bool THD_MES_TIM = true;
+#endif
 			public int		GRP_ROW_CNT = 2;
 			public int		GRP_COL_CNT = 4;
 			//---

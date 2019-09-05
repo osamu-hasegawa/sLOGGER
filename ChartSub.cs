@@ -512,6 +512,7 @@ namespace sLOGGER
 			this.pdef.xmax += this.pdef.xwid;
 			Update();
 		}
+double thd_time;
 		public void AddData(double f, bool bUpdateGraph)
 		{
 			this.rbuf.add(f);
@@ -522,8 +523,28 @@ namespace sLOGGER
 			}
 #if true
 			int flag = (f >= G.SS.THD_VAL_PS) ? 1: 0;
-			if (this.rbuf.Count() == 1 || flag != th_bak) {
-#if true
+#if true//2019.09.06(近接時間測定)
+			if (G.SS.THD_MES_TIM) {
+				string buf;
+				if (flag == 1) {
+					if (this.th_bak == 0) {
+						this.thd_time = 0;
+					}
+					else {
+						this.thd_time += this.interval;
+					}
+				}
+				else {
+				}
+				buf = string.Format("{0:F1}s", this.thd_time);
+				Graphics g = this.pbox.CreateGraphics();
+				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
+				DrawText(g, buf, pt, (flag == 1) ? Color.Green: Color.Red, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
+				this.th_bak = flag;
+			}
+			else
+#endif
+			if (this.rbuf.Count() == 1 || flag != this.th_bak) {
 				Graphics g = this.pbox.CreateGraphics();
 				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
 				if (flag == 1) {
@@ -532,19 +553,7 @@ namespace sLOGGER
 				else {
 					DrawText(g, G.SS.THD_LES_STR, pt, Color.Red, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
 				}
-				th_bak = flag;
-#else
-				if (flag) {
-					this.lbl.Text = G.SS.THD_OVR_STR;
-					this.lbl.ForeColor = Color.Green;
-				}
-				else {
-					this.lbl.Text = G.SS.THD_LES_STR;
-					this.lbl.ForeColor = Color.Red;
-				}
-				th_bak = flag;
-				this.lbl.AutoSize = true;
-#endif
+				this.th_bak = flag;
 			}
 #endif
 		}

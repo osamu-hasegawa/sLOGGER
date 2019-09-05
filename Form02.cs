@@ -24,10 +24,10 @@ namespace sLOGGER
 //		Random r = new Random();
 		G.SENSOR_TBL[]
 			SENS = null;
-		int		mes_itv;
+		int		mes_itv = 200;
 		int		mes_cnt;
 		int		mes_nxt;
-		int		mes_wid;
+		int		mes_wid = 60;
 		int		mes_pts_in_wid;
 //		Chart[]	charts_old = null;
 		PictureBox[] charts = null;
