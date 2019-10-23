@@ -75,6 +75,8 @@ namespace sLOGGER
 //		double interval = C.INTERVAL/1000.0;
 //		public Label	lbl;
 		public int th_bak = -1;
+		public int pw_bak = -1;
+
 		public Font m_fnt = null;
 		void Draw4Edge(Graphics pDC, RECT rt, Pen pen)
 		{
@@ -281,7 +283,7 @@ namespace sLOGGER
 #if true
 			if (true) {
 				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
-				DrawText(pDC, G.SS.THD_OVR_STR, pt, Color.White, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
+				DrawText(pDC, G.SS.THD_OVR_STR, pt, Color.White, Color.White, "Consolas", G.SS.THD_FNT_SIZ);
 				th_bak = -1;
 			}
 #endif
@@ -289,6 +291,11 @@ namespace sLOGGER
 		}
 		void DrawText(Graphics pDC, string buf, Point pt, Color fcolor, Color bcolor, string fname="Arial", int fsize=10)
 		{
+			if (buf.Length > 0) {
+			if (buf[buf.Length-1] != 's') {
+				buf = buf;
+			}
+			}
 			// Create font and brush.
 			Font drawFont = new Font(fname, fsize);
  
@@ -524,6 +531,30 @@ double thd_time;
 #if true
 			int flag = (f >= G.SS.THD_VAL_PS) ? 1: 0;
 #if true//2019.09.06(近接時間測定)
+			if (G.SS.EXT_MES_TIM) {
+				string buf;
+				// power.off->power.on から 近接.検出→未検出までを時間測定
+				if (G.EXT_PWR_STS == 1/*ON*/) {
+					if (this.pw_bak == 0) {
+					//	this.thd_time = 0;	// POWER.OFF->ONで時間クリア
+					}
+					else if (flag == 1) {
+						this.thd_time += this.interval;
+					}
+				}
+				else {
+					if (flag == 1) {
+						this.thd_time = 0;	// POWER.OFN＆検出で時間クリア
+					}
+				}
+				buf = string.Format("{0:F1}s ", this.thd_time);
+				Graphics g = this.pbox.CreateGraphics();
+				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
+				DrawText(g, buf, pt, (flag == 1) ? Color.Green: Color.Red, Color.White, "Consolas", G.SS.THD_FNT_SIZ);
+
+				this.pw_bak = G.EXT_PWR_STS;
+			}
+			else
 			if (G.SS.THD_MES_TIM) {
 				string buf;
 				if (flag == 1) {
@@ -539,7 +570,7 @@ double thd_time;
 				buf = string.Format("{0:F1}s", this.thd_time);
 				Graphics g = this.pbox.CreateGraphics();
 				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
-				DrawText(g, buf, pt, (flag == 1) ? Color.Green: Color.Red, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
+				DrawText(g, buf, pt, (flag == 1) ? Color.Green: Color.Red, Color.White, "Consolas", G.SS.THD_FNT_SIZ);
 				this.th_bak = flag;
 			}
 			else
@@ -548,10 +579,10 @@ double thd_time;
 				Graphics g = this.pbox.CreateGraphics();
 				Point pt = new Point(pdef.rt_gr.left + 10, pdef.rt_gr.top + 10);
 				if (flag == 1) {
-					DrawText(g, G.SS.THD_OVR_STR, pt, Color.Green, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
+					DrawText(g, G.SS.THD_OVR_STR, pt, Color.Green, Color.White, "Consolas", G.SS.THD_FNT_SIZ);
 				}
 				else {
-					DrawText(g, G.SS.THD_LES_STR, pt, Color.Red, Color.White, "MS UI Gothic", G.SS.THD_FNT_SIZ);
+					DrawText(g, G.SS.THD_LES_STR, pt, Color.Red, Color.White, "Consolas", G.SS.THD_FNT_SIZ);
 				}
 				this.th_bak = flag;
 			}

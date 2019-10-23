@@ -95,7 +95,14 @@ namespace sLOGGER
 				//for device scan
 			}
 			if (adr == 0x44) {
-				int val = (int)(3000 * Math.Abs(Math.Sin(m_idx/300.0)));
+				int val;
+				if ((Environment.TickCount % 30000) >= 15000) {
+				val = (int)(3000 * Math.Abs(Math.Sin(m_idx/300.0*Math.PI)));
+				}
+				else {
+				val = 0;
+				m_idx = 150;
+				}
 				d38_reg[0x44] = (byte)B1(val);
 				d38_reg[0x45] = (byte)B2(val);
 			}
@@ -198,12 +205,11 @@ namespace sLOGGER
 			case D.CMD_GET_I2C_WRT:
 				CMD_GET_I2C_WRT(_buf);
 			break;
-			/*case D.CMD_GET_PLM_POS:
-				RET_BUF[0] = (byte)B4(0);//MSB
-				RET_BUF[1] = (byte)B3(0);
-				RET_BUF[2] = (byte)B2(0);
-				RET_BUF[3] = (byte)B1(0);//LSB
+			case D.CMD_GET_PIO_BIT:
+				// 15秒おきにHI/LOを繰り返し
+				RET_BUF[0] = (Environment.TickCount % 30000) >= 15000 ? (byte)1: (byte)0;
 				break;
+			/*
 			case D.CMD_SET_PLM_POS:
 				break;
 			case D.CMD_GET_PLM_STS:

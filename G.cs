@@ -98,7 +98,8 @@ namespace sLOGGER
 			public int THD_FNT_SIZ = 36;
 #endif
 #if true//2019.09.06(近接時間測定)
-			public bool THD_MES_TIM = true;
+			public bool THD_MES_TIM = false;
+			public bool EXT_MES_TIM = true;
 #endif
 			public int		GRP_ROW_CNT = 2;
 			public int		GRP_COL_CNT = 4;
@@ -274,6 +275,7 @@ namespace sLOGGER
 		static public int CAM_HEI;
 #endif
 		static public int LED_PWR_STS;
+		static public int EXT_PWR_STS;
 #if false//2019.08.23
 		static public int CAM_GAI_STS=2;//0:固定, 1:自動, 2:不定
 		static public int CAM_EXP_STS=2;//0:固定, 1:自動, 2:不定

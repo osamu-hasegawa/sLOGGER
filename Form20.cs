@@ -69,6 +69,7 @@ namespace sLOGGER
 #endif
 #if true//2019.09.06(近接時間測定)
 				DDV.DDX(bUpdate, this.checkBox1, ref m_ss.THD_MES_TIM);
+				DDV.DDX(bUpdate, this.checkBox2, ref m_ss.EXT_MES_TIM);
 #endif
 
                 rc = true;
@@ -82,13 +83,29 @@ namespace sLOGGER
 #if true//2019.09.06(近接時間測定)
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.checkBox1.Checked) {
+			if (sender == this.checkBox1 && this.checkBox1.Enabled == false) {
+				return;
+			}
+			if (sender == this.checkBox2 && this.checkBox2.Enabled == false) {
+				return;
+			}
+			if (this.checkBox1.Checked || this.checkBox2.Checked) {
 				this.textBox2.Enabled = false;
 				this.textBox3.Enabled = false;
 			}
 			else {
 				this.textBox2.Enabled = true;
 				this.textBox3.Enabled = true;
+			}
+			if (this.checkBox2.Checked && sender == this.checkBox1) {
+				this.checkBox2.Enabled = false;
+				this.checkBox2.Checked = false;
+				this.checkBox2.Enabled = true;
+			}
+			if (this.checkBox1.Checked && sender == this.checkBox2) {
+				this.checkBox1.Enabled = false;
+				this.checkBox1.Checked = false;
+				this.checkBox1.Enabled = true;
 			}
 		}
 #endif

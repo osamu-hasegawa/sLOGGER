@@ -348,6 +348,15 @@ namespace sLOGGER
 					tic1 = tic2;
 				}
 			}
+			if (true) {
+				int bits = D.GET_PIO_BIT();
+				if ((bits&0x01) == 1) {
+					G.EXT_PWR_STS = 1;//power-on
+				}
+				else {
+					G.EXT_PWR_STS = 0;//power-off
+				}
+			}
 			for (int i = 0; i < G.DT.Length; i++) {
 				object[] objs;
 				if (G.DT[i].DID != 0x38) {

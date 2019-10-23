@@ -114,8 +114,6 @@ namespace sLOGGER
 			}
 			else if (sender == this.button1) {
 #if false
-				Form20 frm = new Form20();
-				frm.ShowDialog(this);
 #else
 				if (D.INIT()) {
 					 this.button1.Enabled = false;
@@ -138,6 +136,8 @@ namespace sLOGGER
 						this.button20.Enabled = false;
 					}
 					POST_INIT();
+					//---
+					D.SET_PIO_DIR(0xff/*all input*/);
 				}
 #endif
 			}
@@ -684,6 +684,9 @@ namespace sLOGGER
 					int ret, done;
 					byte[] buf = {0};
 					int	rcnt = 0;
+					if (devadr != 0x38) {
+						continue;
+					}
 retry:
 					System.Threading.Thread.Sleep(1);
 					D.GET_I2C_RED(busadr, devadr, 0x00, 1, out buf, out ret, out done);

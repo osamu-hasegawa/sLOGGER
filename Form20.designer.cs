@@ -35,6 +35,7 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.label75 = new System.Windows.Forms.Label();
 			this.label74 = new System.Windows.Forms.Label();
 			this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -59,7 +60,7 @@
 			this.comboBox13 = new System.Windows.Forms.ComboBox();
 			this.label33 = new System.Windows.Forms.Label();
 			this.label34 = new System.Windows.Forms.Label();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -170,6 +171,7 @@
 			// 
 			// groupBox2
 			// 
+			this.groupBox2.Controls.Add(this.checkBox2);
 			this.groupBox2.Controls.Add(this.checkBox1);
 			this.groupBox2.Controls.Add(this.label75);
 			this.groupBox2.Controls.Add(this.label74);
@@ -186,10 +188,21 @@
 			this.groupBox2.Controls.Add(this.textBox37);
 			this.groupBox2.Location = new System.Drawing.Point(178, 15);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(381, 92);
+			this.groupBox2.Size = new System.Drawing.Size(381, 114);
 			this.groupBox2.TabIndex = 61;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "スケール";
+			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(175, 70);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(154, 16);
+			this.checkBox1.TabIndex = 38;
+			this.checkBox1.Text = "閾値以上区間の時間測定";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
 			// 
 			// label75
 			// 
@@ -451,16 +464,16 @@
 			this.label34.TabIndex = 1;
 			this.label34.Text = "IR";
 			// 
-			// checkBox1
+			// checkBox2
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(175, 70);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(154, 16);
-			this.checkBox1.TabIndex = 38;
-			this.checkBox1.Text = "閾値以上区間の時間測定";
-			this.checkBox1.UseVisualStyleBackColor = true;
-			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(175, 92);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(147, 16);
+			this.checkBox2.TabIndex = 38;
+			this.checkBox2.Text = "電源監視による時間測定";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
 			// 
 			// Form20
 			// 
@@ -532,6 +545,7 @@
 		private System.Windows.Forms.Label label33;
 		private System.Windows.Forms.Label label34;
 		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox checkBox2;
 
 	}
 }
